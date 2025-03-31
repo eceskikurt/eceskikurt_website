@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ece Eskikurt (AJ)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="code-window">
+    <div class="window-header">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+    </div>
+    <div class="window-body">
+      <h1>Ece Eskikurt (AJ)</h1>
+      <p class="typed"></p>
+      <p class="contact-info"></p>
+    </div>
+  </div>
+
+  <script>
+    const mainText = "This site is where I’ll thread together the many sides of who I am and what I have accomplished so far.";
+    const contactText = "To reach me, please email contact@eceskikurt.com";
+    let i = 0;
+    let j = 0;
+    const speed = 35;
+
+    function typeMain() {
+      if (i < mainText.length) {
+        document.querySelector('.typed').innerHTML += mainText.charAt(i);
+        i++;
+        setTimeout(typeMain, speed);
+      } else {
+        setTimeout(typeContact, 500); // brief pause
+      }
+    }
+
+    function typeContact() {
+      if (j < contactText.length) {
+        document.querySelector('.contact-info').innerHTML += contactText.charAt(j);
+        j++;
+        setTimeout(typeContact, speed);
+      } else {
+        const container = document.querySelector('.contact-info');
+        container.innerHTML = container.innerHTML.replace(
+          /contact@eceskikurt\.com/,
+          '<a href="mailto:contact@eceskikurt.com">contact@eceskikurt.com</a>'
+        );
+      }
+    }
+
+    window.onload = typeMain;
+  </script>
+</body>
+</html>
